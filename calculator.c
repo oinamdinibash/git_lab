@@ -3,7 +3,8 @@
 // Function declarations
 float add(float a, float b);
 float subtract(float a, float b);
-
+float multiply(float a, float b);
+float divide(float a, float b);
 
 int main() {
     float num1, num2, result;
@@ -27,8 +28,18 @@ int main() {
         case '-':
             result = subtract(num1, num2);
             break;
-        
-        
+        case '*':
+            result = multiply(num1, num2);
+            break;
+        case '/':
+            // Check for division by zero
+            if (num2 != 0) {
+                result = divide(num1, num2);
+            } else {
+                printf("Error: Division by zero\n");
+                return 1; // Exit program with an error code
+            }
+            break;
         default:
             printf("Invalid operator\n");
             return 1; // Exit program with an error code
@@ -49,5 +60,11 @@ float subtract(float a, float b) {
     return a - b;
 }
 
+float multiply(float a, float b) {
+    return a * b;
+}
 
+float divide(float a, float b) {
+    return a / b;
+}
 
